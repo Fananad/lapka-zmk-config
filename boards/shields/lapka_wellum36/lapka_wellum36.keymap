@@ -1,111 +1,35 @@
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/keys.h>
 
-// Определения слоев для удобства
-#define EN  0
-#define RU  1
-#define NAV 2
-#define SYM 3
-
 / {
-    macros {
-        // Макрос переключения языка: нажимает Caps Lock для ОС и переключает слой в ZMK
-        lang_switch: lang_switch {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-                = <&kp CAPSLOCK>
-                , <&macro_tap &tog RU>
-                ;
-        };
-
-        // Макросы для русских символов, которые требуют Shift в ОС
-        // В русской раскладке запятая это Shift + /
-        ru_comma: ru_comma {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&macro_press &kp LSHFT>, <&macro_tap &kp FSLH>, <&macro_release &kp LSHFT>;
-        };
-    };
-
-    combos {
-        compatible = "zmk,combos";
-        
-        // --- Русские буквы, не влезшие на основной слой (Combos) ---
-        // Нажимайте две соседние клавиши одновременно, чтобы получить эти буквы
-        
-        // Х (находится на QWERTY '[') -> Комбо O + P
-        combo_ru_h { timeout-ms = <50>; key-positions = <8 9>; bindings = <&kp LBKT>; layers = <RU>; };
-        // Ъ (находится на QWERTY ']') -> Комбо P + L
-        combo_ru_hard_sign { timeout-ms = <50>; key-positions = <9 19>; bindings = <&kp RBKT>; layers = <RU>; };
-        // Ж (находится на QWERTY ';') -> Комбо K + L
-        combo_ru_zh { timeout-ms = <50>; key-positions = <17 18>; bindings = <&kp SEMI>; layers = <RU>; };
-        // Э (находится на QWERTY ''') -> Комбо L + SEMI (в нашем случае L + точка)
-        combo_ru_e { timeout-ms = <50>; key-positions = <18 19>; bindings = <&kp SQT>; layers = <RU>; };
-        // Б (находится на QWERTY ',') -> Комбо M + COMMA
-        combo_ru_b { timeout-ms = <50>; key-positions = <26 27>; bindings = <&kp COMMA>; layers = <RU>; };
-        // Ю (находится на QWERTY '.') -> Комбо COMMA + DOT
-        combo_ru_yu { timeout-ms = <50>; key-positions = <27 28>; bindings = <&kp DOT>; layers = <RU>; };
-        // Ё (находится на QWERTY '`') -> Комбо Q + W
-        combo_ru_yo { timeout-ms = <50>; key-positions = <0 1>; bindings = <&kp GRAVE>; layers = <RU>; };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
-        // =====================================================================
-        // СЛОЙ 0: АНГЛИЙСКИЙ (EN)
-        // =====================================================================
-        en_layer {
+        default_layer {
             bindings = <
-                &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
-                &kp A      &kp S      &kp D      &kp F      &kp G          &kp H      &kp J      &kp K      &kp L      &kp SEMI
-                &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
-                               &kp LCTRL  &mo NAV    &kp SPACE      &kp ENTER  &mo SYM    &lang_switch
+&kp Q   &kp W   &kp E   &kp R   &kp T       &kp Y   &kp U   &kp I       &kp O   &kp P
+&kp A   &kp S   &kp D   &kp F   &kp G       &kp H   &kp J   &kp K       &kp L   &kp SEMI
+&kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA   &kp DOT &kp SLASH
+        &kp CAPS &kp SPACE &mo 1            &mo 2   &kp LSHIFT &kp RALT
             >;
         };
 
-        // =====================================================================
-        // СЛОЙ 1: РУССКИЙ (RU)
-        // =====================================================================
-        // Буквы стоят на тех же местах (ОС сама переведет Q в Й).
-        // Точка и запятая переопределены, чтобы выдавать точку и запятую в русской раскладке ОС.
-        ru_layer {
-            bindings = <
-                &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
-                &kp A      &kp S      &kp D      &kp F      &kp G          &kp H      &kp J      &kp K      &kp L      &kp SEMI
-                &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &ru_comma  &kp FSLH   &kp QMARK
-                               &kp LCTRL  &mo NAV    &kp SPACE      &kp ENTER  &mo SYM    &lang_switch
-            >;
-        };
-
-        // =====================================================================
-        // СЛОЙ 2: НАВИГАЦИЯ (NAV) - Удержание левого большого пальца
-        // =====================================================================
         nav_layer {
             bindings = <
-                &kp ESC    &none      &none      &none      &none          &kp PG_UP  &kp HOME   &kp UP     &kp END    &kp BSPC
-                &kp LSHFT  &kp LALT   &kp LGUI   &kp LCTRL  &none          &kp PG_DN  &kp LEFT   &kp DOWN   &kp RIGHT  &kp DEL
-                &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
-                               &trans     &trans     &trans         &trans     &trans     &trans
+&trans  &trans  &trans  &trans  &trans      &kp ESC &kp HOME   &kp END      &kp BSPC    &kp DEL
+&trans  &trans  &trans  &trans  &trans      &kp RET &kp LEFT   &kp DOWN     &kp UP      &kp RIGHT
+&trans  &trans  &trans  &trans  &trans      &kp TAB &kp PG_UP  &kp PG_DN    &kp APOS    &trans
+        &trans  &trans  &trans              &trans  &trans  &trans
             >;
         };
 
-        // =====================================================================
-        // СЛОЙ 3: СИМВОЛЫ, ЦИФРЫ И F-КЛАВИШИ (SYM) - Удержание правого большого пальца
-        // =====================================================================
-        // В русской раскладке ОС цифры работают так же, поэтому этот слой универсален.
-        // F-клавиши расположены на нижнем ряду.
-        sym_layer {
+        sym_num_layer {
             bindings = <
-                &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0
-                &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp AMPS   &kp STAR   &kp LPAR   &kp RPAR
-                &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &kp F6     &kp F7     &kp F8     &kp F9     &kp F10
-                               &trans     &trans     &trans         &trans     &trans     &trans
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+&kp EXCL &kp AT &kp HASH   &kp HASH &kp F11         &kp F12 CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR
+&kp F1   &kp F2   &kp F3   &kp F4   &kp F5          &kp F6   &kp F7   &kp F8   &kp F9   &kp F10
+        &trans  &trans  &trans                      &trans  &trans  &trans
             >;
         };
     };
