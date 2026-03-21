@@ -4,36 +4,17 @@
 
 / {
     macros {
-        // Макрос для ввода Юникода в Linux (Ctrl+Shift+U + HEX + Space/Enter)
-        // Пример для Тильды (~), код U+007E
-        u_tilde: u_tilde {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N7 &kp E &kp SPACE>;
-        };
-        // Аналогично для других символов:
-        u_excl: u_excl { // ! (U+0021)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N2 &kp N1 &kp SPACE>;
-        };
-        u_at: u_at { // @ (U+0040)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N4 &kp N0 &kp SPACE>;
-        };
-        u_hash: u_hash { // # (U+0023)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N2 &kp N3 &kp SPACE>;
-        };
-        u_dllr: u_dllr { // $ (U+0024)
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N2 &kp N4 &kp SPACE>;
-        };
+        // Юникод макросы для Linux (Ctrl+Shift+U + HEX + Space)
+        u_excl:  u_excl  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N2 &kp N1 &kp SPACE>; }; // !
+        u_quot:  u_quot  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N2 &kp N2 &kp SPACE>; }; // "
+        u_tilde: u_tilde { compatible = "zmk,behavior-hold-tap"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N7 &kp E &kp SPACE>; }; // ~
+        u_perc:  u_perc  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N2 &kp N5 &kp SPACE>; }; // %
+        u_colon: u_colon { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N3 &kp A &kp SPACE>; }; // :
+        u_comma: u_comma { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N2 &kp C &kp SPACE>; }; // ,
+        u_dot:   u_dot   { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N2 &kp E &kp SPACE>; }; // .
+        u_semi:  u_semi  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N3 &kp B &kp SPACE>; }; // ;
+        u_lpar:  u_lpar  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N2 &kp N8 &kp SPACE>; }; // (
+        u_rpar:  u_rpar  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LC(LS(U)) &kp N2 &kp N9 &kp SPACE>; }; // )
     };
 
     behaviors {
@@ -61,8 +42,8 @@
         nav_layer {
             bindings = <
 &kp LC(TAB) &kp LA(TAB) &kp LC(LALT)  &kp LGUI  &kp PSCRN          &kp ESC &kp HOME   &kp END      &kp BSPC    &kp DEL
-&trans  &trans  &trans  &trans                                     &kp RET &kp UP   &kp DOWN       &kp LEFT    &kp RIGHT
-&trans  &trans  &trans  &trans  &trans                             &kp TAB &kp PG_UP  &kp PG_DN    &kp MINUS   &kp EQUAL
+&u_excl     &u_quot      &u_tilde       &u_perc  &u_colon          &kp RET &kp UP   &kp DOWN       &kp LEFT    &kp RIGHT
+&u_comma    &u_dot       &u_semi      &u_lpar  &u_rpar             &kp TAB &kp PG_UP  &kp PG_DN    &kp MINUS   &kp EQUAL
         &trans  &trans  &trans                                     &trans  &trans  &trans
             >;
         };
