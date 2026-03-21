@@ -60,17 +60,17 @@
 
         nav_layer {
             bindings = <
-&kp LC(TAB) &kp LA(TAB) &kp LC(LALT)  &kp LGUI    &kp PSCRN   &kp ESC &kp HOME   &kp END      &kp BSPC    &kp DEL
-&u_tilde    &u_excl     &u_at        &u_hash    &u_dllr       &kp RET &kp UP   &kp DOWN     &kp LEFT      &kp RIGHT
-&trans  &trans  &trans  &trans  &trans                        &kp TAB &kp PG_UP  &kp PG_DN    &kp MINUS   &kp EQUAL
-        &trans  &trans  &trans                                &trans  &trans  &trans
+&kp LC(TAB) &kp LA(TAB) &kp LC(LALT)  &kp LGUI  &kp PSCRN          &kp ESC &kp HOME   &kp END      &kp BSPC    &kp DEL
+&trans  &trans  &trans  &trans                                     &kp RET &kp UP   &kp DOWN     &kp LEFT      &kp RIGHT
+&trans  &trans  &trans  &trans  &trans                             &kp TAB &kp PG_UP  &kp PG_DN    &kp MINUS   &kp EQUAL
+        &trans  &trans  &trans                                     &trans  &trans  &trans
             >;
         };
 
         sym_num_layer {
             bindings = <
 &kp N1  &kp N2  &kp N3  &kp N4  &kp N5      &kp N6     &kp N7  &kp N8   &kp N9   &kp N0
-&trans  &trans  &trans  &trans  &kp F11     &kp F12    &trans  &trans   &trans   &trans
+&trans  &trans  &trans  &trans  &kp F11     &kp F12    &trans  &trans   &kp LBKT &kp SQT
 &kp F1  &kp F2  &kp F3  &kp F4  &kp F5      &kp F6     &kp F7  &kp F8   &kp F9   &kp F10
         &trans  &trans  &trans              &trans  &trans  &trans
             >;
