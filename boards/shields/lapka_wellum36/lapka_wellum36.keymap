@@ -3,6 +3,39 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    macros {
+        // Макрос для ввода Юникода в Linux (Ctrl+Shift+U + HEX + Space/Enter)
+        // Пример для Тильды (~), код U+007E
+        u_tilde: u_tilde {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <10>;
+            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N7 &kp E &kp SPACE>;
+        };
+        // Аналогично для других символов:
+        u_excl: u_excl { // ! (U+0021)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N2 &kp N1 &kp SPACE>;
+        };
+        u_at: u_at { // @ (U+0040)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N4 &kp N0 &kp SPACE>;
+        };
+        u_hash: u_hash { // # (U+0023)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N2 &kp N3 &kp SPACE>;
+        };
+        u_dllr: u_dllr { // $ (U+0024)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(U)) &kp N0 &kp N0 &kp N2 &kp N4 &kp SPACE>;
+        };
+    };
+
     behaviors {
         my_mt: mod_tap {
             compatible = "zmk,behavior-hold-tap";
@@ -28,9 +61,9 @@
         nav_layer {
             bindings = <
 &kp LC(TAB) &kp LA(TAB) &kp LC(LALT)  &kp LGUI    &kp PSCRN   &kp ESC &kp HOME   &kp END      &kp BSPC    &kp DEL
-&trans  &trans  &trans  &trans  &trans          &kp RET &kp UP   &kp DOWN     &kp LEFT      &kp RIGHT
-&trans  &trans  &trans  &trans  &trans          &kp TAB &kp PG_UP  &kp PG_DN    &kp MINUS   &kp EQUAL
-        &trans  &trans  &trans                  &trans  &trans  &trans
+&u_tilde    &u_excl     &u_at        &u_hash    &u_dllr       &kp RET &kp UP   &kp DOWN     &kp LEFT      &kp RIGHT
+&trans  &trans  &trans  &trans  &trans                        &kp TAB &kp PG_UP  &kp PG_DN    &kp MINUS   &kp EQUAL
+        &trans  &trans  &trans                                &trans  &trans  &trans
             >;
         };
 
