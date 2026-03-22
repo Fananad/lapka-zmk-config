@@ -43,7 +43,7 @@
 
 ### Правая рука (Навигация и Системные):
 - **Верх:** `ESC` | `HOME` | `END` | `BSPC` | `DEL`
-- **Середина:** `ENTER` | `UP` | `DOWN` | `LEFT` | `RIGHT`
+- **Середина:** `ENTER` | `` | `Ё` | `SHIFT` | `Ctrl`
 - **Низ:** `TAB` | `PG_UP` | `PG_DN` | `-` | `=`
 - **Доп. кнопки (лево):** `Ctrl+Tab` | `Alt+Tab` | `Ctrl+Alt` | `Win` | `PrtSc`
 
