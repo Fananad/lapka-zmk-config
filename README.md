@@ -1,42 +1,78 @@
-# Wellum 36 для клавиатуры Lapka
+# Документация финальной раскладки ZMK для Lapka (Wellum 36)
 
-Реализация раскладки [Wellum 36](https://github.com/braindefender/wellum) для клавиатуры [Lapka](https://github.com/braindefender/lapka)
+Эта раскладка специально оптимизирована для стабильной работы в **Linux** со стандартными RU/EN раскладками, используя **Unicode-макросы** для спецсимволов и **Hold-Tap** поведения для компактности.
 
-Эта версия использует Dongle и состоит из трёх частей:
-- `lapka_wellum36_left`
-- `lapka_wellum36_right`
-- `lapka_wellum36_dongle`
+---
 
-Чтобы перевести половинку в режим прошивки, нажмите кнопку Reset дважды.
-Чтобы перевести донгл в режим прошивки, замкните пины RST и GND дважды.
+## 1. Базовый слой (Default Layer)
 
-Если вы редактировали настройки или раскладку и хотите обновить прошивку,
-существует стабильный способ обнаружения донглом двух половинок:
-1. Подключите донгл и прошейте в него `settings_reset` файл.
-2. Отключите донгл от провода и отложите в сторону.
-3. Подключите левую половинку и прошейте в неё сначала `settings_reset`, затем `lapka_wellum36_left`
-4. Подключите правую половинку и прошейте в неё сначала `settings_reset`, затем `lapka_wellum36_right`
-5. Подключите донгл и прошейте в него `lapka_wellum36_dongle`
+Это ваш основной слой для набора текста. Главная особенность — использование модификаторов прямо под буквами.
 
-Донгл должен быть прошит в последнюю очередь!
+| Клавиша | Быстрое нажатие (Tap) | Удержание (Hold) | Описание |
+| :--- | :--- | :--- | :--- |
+| **Z** | `z` / `я` | **LCTRL** | Контрол под мизинцем |
+| **X** | `x` / `ч` | **LSHIFT** | Шифт под безымянным |
+| **C** | `c` / `с` | **LGUI (Win)** | Клавиша Win под средним |
+| **P** | `p` / `з` | **LAYER 2 (SYM)** | Слой SYM/NUM под мизинцем (верх) |
+| **;** | `;` / `ж` | **LAYER 2 (SYM)** | Слой SYM/NUM под мизинцем (дом) |
 
-# Wellum 36 for Lapka keyboard
+**Нижний ряд (Thumb Row):**
+- `CAPS` | `SPACE` | `MO 1 (NAV)` || `MO 2 (SYM)` | `LSHIFT` | `RALT (AltGr)`
 
-This is implementation of [Wellum 36](https://github.com/braindefender/wellum) for [Lapka](https://github.com/braindefender/lapka) keyboard.
+---
 
-This version uses Dongle and consists of three parts:
-- `lapka_wellum36_left`
-- `lapka_wellum36_right`
-- `lapka_wellum36_dongle`
+## 2. Слой навигации и символов (NAV Layer - 1)
+**Активация:** Удержание левого большого пальца (`MO 1`).
 
-To turn half into bootloader mode, press reset button twice.
-To turn dongle into bootloader mode, short RST and GND pins twice.
+Этот слой использует **Unicode-макросы**, поэтому символы печатаются одинаково в любой раскладке Linux.
 
-If you edit layout and want to flash new firmware, there is a stable way to get both halves to pair with the dongle:
-1. Connect the dongle and flash `settings_reset` file.
-2. Disconnect and turn off the dongle.
-3. Connect left half and flash `settings_reset` first, then `lapka_wellum36_left`
-4. Connect right half and flash `settings_reset` first, then `lapka_wellum36_right`
-5. Connect the dongle and flash `lapka_wellum36_dongle` file.
+### Левая рука (Двухэтажные символы):
+Каждая клавиша имеет две функции (Нажал / Удержал):
 
-So, the dongle must be flashed in the very end!
+| Позиция | Нажатие (Tap) | Удержание (Hold) |
+| :--- | :---: | :---: |
+| **Ряд 2** | `!` | `?` |
+| | `"` | `'` |
+| | `~` | `` ` `` |
+| | `;` | `:` |
+| | `&` | `^` |
+| **Ряд 3** | `,` | `.` |
+| | `%` | `*` |
+| | `/` | `\|` |
+| | `(` | `)` |
+| | `{` | `}` |
+
+### Правая рука (Навигация и Системные):
+- **Верх:** `ESC` | `HOME` | `END` | `BSPC` | `DEL`
+- **Середина:** `ENTER` | `UP` | `DOWN` | `LEFT` | `RIGHT`
+- **Низ:** `TAB` | `PG_UP` | `PG_DN` | `-` | `=`
+- **Доп. кнопки (лево):** `Ctrl+Tab` | `Alt+Tab` | `Ctrl+Alt` | `Win` | `PrtSc`
+
+---
+
+## 3. Слой цифр и спец. букв (SYM Layer - 2)
+**Активация:** Удержание правого большого пальца (`MO 2`) или мизинца (`P` / `;`).
+
+### Цифры и F-клавиши:
+- **Ряд 1:** `1` `2` `3` `4` `5` | `6` `7` `8` `9` `0`
+- **Ряд 3:** `F1` - `F10` (слева направо)
+- **F11 / F12:** На позициях `G` и `H` (центр среднего ряда)
+
+### Русские буквы (Х, Ъ, Ж, Э):
+Эти буквы вынесены на правую сторону, чтобы не зависеть от компактности базового слоя:
+- `Х` — на месте `O` (в EN раскладке это `[` )
+- `Ъ` — на месте `P` (в EN раскладке это `]` )
+- `Ж` — на месте `L` (в EN раскладке это `;` )
+- `Э` — на месте `;` (в EN раскладке это `'` )
+
+---
+
+## 4. Технические особенности
+
+### Unicode в Linux
+Для работы макросов в Linux должен быть включен ввод Unicode (через IBus). Макросы автоматически нажимают `Ctrl+Shift+U`, вводят HEX-код и завершают ввод пробелом.
+- **Задержка:** Установлена `wait-ms = <10>` и `tap-ms = <10>` для стабильности.
+
+### Тайминги (Behaviors)
+- **Tapping Term:** 200 мс. Если вы держите клавишу дольше 200 мс, срабатывает модификатор или слой. Если меньше — печатается буква.
+- **Flavor:** `tap-preferred`. Приоритет отдается быстрому набору букв, что минимизирует ложные срабатывания модификаторов при быстрой печати.
