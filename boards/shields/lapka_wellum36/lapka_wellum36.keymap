@@ -14,7 +14,7 @@
         u_semi:  u_semi  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N3 &kp B &kp SPACE>; }; // ;
         u_colon: u_colon { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N3 &kp A &kp SPACE>; }; // :
         u_amp:   u_amp   { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N2 &kp N6 &kp SPACE>; }; // &
-        u_caret: u_caret { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N5 &kp E &kp SPACE>; }; // ^
+        u_dollar: u_dollar { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N2 &kp N4 &kp SPACE>; }; // $
         u_comma: u_comma { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N2 &kp C &kp SPACE>; }; // ,
         u_dot:   u_dot   { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N2 &kp E &kp SPACE>; }; // .
         u_perc:  u_perc  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; wait-ms = <10>; tap-ms = <10>; bindings = <&kp LC(LS(U)) &kp N2 &kp N5 &kp SPACE>; }; // %
@@ -41,7 +41,7 @@
         qu_ap: qu_ap { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_apos>, <&u_quot>; };
         ti_gr: ti_gr { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_grave>, <&u_tilde>; };
         se_co: se_co { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_colon>, <&u_semi>; };
-        am_ca: am_ca { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_caret>, <&u_amp>; };
+        am_ca: am_ca { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_dollar>, <&u_amp>; };
         
         // Пары для 3-го ряда
         co_do: co_do { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_dot>, <&u_comma>; };
