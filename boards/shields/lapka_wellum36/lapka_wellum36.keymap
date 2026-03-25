@@ -31,7 +31,7 @@
         my_mt: custom_mod_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred"; 
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
         };
@@ -42,7 +42,7 @@
         ti_gr: ti_gr { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_grave>, <&u_tilde>; };
         se_co: se_co { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_colon>, <&u_semi>; };
         am_ca: am_ca { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_dollar>, <&u_amp>; };
-        
+
         // Пары для 3-го ряда
         co_do: co_do { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_dot>, <&u_comma>; };
         pe_st: pe_st { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&u_star>, <&u_perc>; };
@@ -65,9 +65,9 @@
 
         nav_layer {
             bindings = <
-&kp LC(TAB) &kp LA(TAB) &kp LC(LALT) &kp LEFT  &kp RIGHT         &kp ESC  &kp HOME   &kp END     &kp BSPC    &kp DEL
+&kp LC(TAB) &kp LA(TAB) &kp LC(LALT) &kp LEFT  &kp RIGHT        &kp ESC  &kp HOME   &kp END     &kp BSPC    &kp DEL
 &ex_qu 0 0  &qu_ap 0 0  &ti_gr 0 0   &se_co 0 0 &am_ca 0 0      &kp RET  &kp PG_UP  &kp PG_DN   &kp MINUS   &kp EQUAL
-&co_do 0 0  &pe_st 0 0  &sl_pi 0 0   &lp_rp 0 0 &lb_rb 0 0      &kp TAB  &kp PSCRN  &kp GRAVE  &kp LSHIFT  &kp LCTRL
+&co_do 0 0  &pe_st 0 0  &sl_pi 0 0   &lp_rp 0 0 &lb_rb 0 0      &kp TAB  &kp PSCRN  &my_mt LGUI GRAVE  &kp LSHIFT  &kp LCTRL
                                &trans    &trans     &trans      &trans   &trans     &trans
             >;
         };
@@ -75,9 +75,9 @@
         sym_num_layer {
             bindings = <
 &kp N1  &kp N2  &kp N3  &kp N4  &kp N5              &kp N6     &kp N7  &kp N8    &kp N9   &kp N0
-&trans  &trans  &trans  &trans  &kp F11             &kp F12    &kp UP  &kp DOWN  &kp LEFT  &kp RIGHT
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5              &kp F6     &kp F7  &kp F8    &my_mt LSHIFT F9 &my_mt LCTRL F10
-        &trans  &trans  &trans                      &trans     &trans  &trans
+&kp F1  &kp F2  &kp F3  &kp F4  &kp F5              &trans     &kp UP  &kp DOWN  &kp LEFT  &kp RIGHT
+&kp F6  &kp F7  &kp F8  &kp F9  &kp F10             &trans     &trans  &trans     &trans  &trans
+                &kp F11  &kp F12  &trans            &trans     &trans  &trans
             >;
         };
     };
