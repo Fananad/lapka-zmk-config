@@ -65,7 +65,7 @@
 
         nav_layer {
             bindings = <
-&kp LA(TAB) &kp LC(TAB) &kp LC(LALT) &kp LEFT  &kp RIGHT        &kp ESC  &kp HOME   &kp END     &kp BSPC    &kp DEL
+&kp LGUI &kp LC(TAB) &kp LC(LALT) &kp LEFT  &kp RIGHT        &kp ESC  &kp HOME   &kp END     &kp BSPC    &kp DEL
 &ex_qu 0 0  &qu_ap 0 0  &ti_gr 0 0   &se_co 0 0 &am_ca 0 0      &kp RET  &kp PG_UP  &kp PG_DN   &kp MINUS   &kp EQUAL
 &co_do 0 0  &pe_st 0 0  &sl_pi 0 0   &lp_rp 0 0 &lb_rb 0 0      &kp TAB  &kp PSCRN  &my_mt LGUI GRAVE  &kp LSHIFT  &kp LCTRL
                                &trans    &trans     &trans      &trans   &trans     &trans
