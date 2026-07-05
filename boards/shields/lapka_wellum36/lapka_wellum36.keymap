@@ -37,26 +37,6 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        // QW/WQ -> [ ]
-        combo_lbkt { timeout-ms = <40>; bindings = <&kp LBKT>; key-positions = <0 1>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-        combo_rbkt { timeout-ms = <40>; bindings = <&kp RBKT>; key-positions = <1 0>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-
-        // FG/GF -> { }
-        combo_lbrc { timeout-ms = <40>; bindings = <&kp LBRC>; key-positions = <8 9>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-        combo_rbrc { timeout-ms = <40>; bindings = <&kp RBRC>; key-positions = <9 8>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-
-        // KL/LK -> ( )
-        combo_lpar { timeout-ms = <40>; bindings = <&kp LPAR>; key-positions = <25 26>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-        combo_rpar { timeout-ms = <40>; bindings = <&kp RPAR>; key-positions = <26 25>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-
-        // L;/;L -> ' "
-        combo_sqt { timeout-ms = <40>; bindings = <&kp SQT>; key-positions = <26 27>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-        combo_dqt { timeout-ms = <40>; bindings = <&kp DQT>; key-positions = <27 26>; layers = <DEF SYM>; require-prior-idle-ms = <100>; };
-    };
-
     cond_layers {
         compatible = "zmk,conditional-layers";
 
